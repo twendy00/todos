@@ -1,4 +1,4 @@
-/*
+
 CREATE TABLE todolists (
   id serial PRIMARY KEY,
   title text NOT NULL UNIQUE,
@@ -37,7 +37,7 @@ VALUES
   ('Study for Launch School', true, 2), 
   ('Go to Libby''s birthday party', false, 4)
 ; 
-*/
+
 
 CREATE TABLE users (
   username text PRIMARY KEY,

@@ -1,12 +1,14 @@
 {
-  "name": "todos-js185",
+  "name": "todos",
   "version": "1.0.0",
-  "main": "todos.js",
+  "description": "",
+  "main": "todos-app.js",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
-    "start": "npx nodemon todos.js"
+    "heroku-postbuild": "npm install --production",
+    "start": "npx nodemon todos-app.js"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +18,7 @@
   "dependencies": {
     "bcrypt": "^5.1.0",
     "connect-loki": "^1.1.0",
+    "dotenv": "^16.3.1",
     "express": "^4.17.1",
     "express-flash": "0.0.2",
     "express-session": "^1.17.0",
@@ -24,5 +27,8 @@
     "pg": "^8.11.0",
     "pug": "^2.0.4"
   },
-  "description": ""
+  "engines": {
+    "node": "18.16.0",
+    "npm": "9.5.1"
+  }
 }

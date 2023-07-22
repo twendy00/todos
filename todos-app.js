@@ -1,3 +1,5 @@
+require("dotenv").config(); // Don't do this
+const config = require("./lib/config"); 
 const express = require("express");
 const morgan = require("morgan");
 const flash = require("express-flash");
@@ -8,8 +10,8 @@ const PgPersistence = require("./lib/pg-persistence");
 const catchError = require("./lib/catch-error");
 
 const app = express();
-const host = "localhost";
-const port = 3002;
+const host = config.HOST;
+const port = config.PORT;
 const LokiStore = store(session);
 
 app.set("views", "./views");
@@ -28,7 +30,7 @@ app.use(session({
   name: "launch-school-todos-session-id",
   resave: false,
   saveUninitialized: true,
-  secret: "this is not very secure",
+  secret: config.SECRET,
   store: new LokiStore({}),
 }));
 
@@ -66,6 +68,14 @@ const requiresAuthentication = (req, res, next) => {
 
 // Redirect start page
 app.get("/", (req, res) => {
+  console.log("OLD SECRETS");
+  console.log(config.SECRET)
+  console.log(process.env.SECRET)
+  console.log(config.SECRET)
+  console.log(process.env.SECRET)
+  config.SECRET = "new secret"
+  console.log(config.SECRET)
+  console.log(process.env.SECRET)
   res.redirect("/lists");
 });
 
